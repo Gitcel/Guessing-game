@@ -1,0 +1,339 @@
+<html>
+
+	<head>
+
+		<title>
+			Guessing game
+		</title>
+
+		<meta charset="UTF-8">
+
+		<link rel="stylesheet" type="text/css" href="Game.css">
+
+		<script type="text/javascript" src="list2.js"></script>
+		<script type="text/javascript">
+
+		function init() {
+
+			document.body.onload = randomWord();
+			document.body.onload = htmlFirst();
+
+		}
+
+		function htmlFirst() {
+					
+			var openFile;
+			var input;
+			var repeats;
+			var messageTag;
+			var randWordVarMessages;
+			var incorrectGuessCounter;	
+			var temp = "";	
+			var index;
+			var oldGuessesStore;
+
+			console.log(wordSymb);
+
+			document.getElementById('input-tag').value = "";	
+				
+			instructions();	
+
+		}
+
+		function instructions() {
+			
+			document.getElementById('messages').style.fontSize = '95px';
+			document.getElementById('messages').innerHTML = "Welcome to the Guessing Game.";		
+			document.getElementById('word').style.fontSize = '25px';
+
+			oldGuessesStore = [];
+			incorrectGuessCounter = 0;	
+
+			document.getElementById('input-tag').onkeydown = function(event) {
+
+				if (document.getElementById('messages').innerHTML == "Welcome to the Guessing Game." && event.keyCode > -1) {
+					
+					document.getElementById('input-tag').value = "";
+
+					document.getElementById('messages').innerHTML = "INSTRUCTIONS";
+					document.getElementById('messages').style.fontSize = '60px';			
+					document.getElementById('messages').style.marginLeft = '400' + 'px';
+					document.getElementById('messages').style.marginTop = '10' + 'px';
+
+					document.getElementById('word').innerHTML = "The word that you try to guess will be in the middle of the monitor, in the form of underscores." + "<br>" + "<br>" + "The word that you try to guess will be in the middle of the monitor, in the form of underscores." + "<br>" + "<br>" + "Each underscore represents a letter." + "<br>" + "<br>" + "When you get a guess right, the underscore will change into the letter you guessed." + "<br>" + "<br>" + "If you get a guess wrong, the wrong letter will be stored at the top right of the monitor." + "<br>" + "<br>" + "Click in the square below the monitor to type the guesses." + "<br>" + "<br>" + "You have 8 guesses to win by guessing the hidden word.";
+					document.getElementById('word').style.marginLeft = '300' + 'px';
+					document.getElementById('word').style.marginTop = '80' + 'px';
+					document.getElementById('word').style.fontSize = '18px';
+					document.getElementById('word').style.textAlign = 'center';
+					document.getElementById('word').style.textShadow = '0 0 .5px rgba(200,200,200), 0 0 1px rgba(0,200,0)'
+					document.getElementById('input-tag').value = "";				
+
+				}								
+			
+				else if (document.getElementById('messages').innerHTML == "INSTRUCTIONS" && event.keyCode > -1) {
+
+					document.getElementById('word').style.fontSize = '140px';
+					document.getElementById('word').style.marginTop = '200px';
+					wordSize();
+							
+					document.getElementById('input-tag').value = "";							
+
+					for (var i = 0; i < wordArray.length; i++) {
+						
+						document.getElementById('word').innerHTML = wordSymb.join(" ");
+
+					}
+
+					start();
+
+				}						
+
+			}			
+
+		}
+
+		function start() {	
+
+			document.getElementById('input-tag').value = "";
+
+			document.getElementById('messages').innerHTML = "Guess a letter.";
+			document.getElementById('messages').style.fontSize = '50px';
+			document.getElementById('messages').style.marginLeft = '460px';
+			document.getElementById('messages').style.marginTop = '30px';
+
+			if (document.getElementById('messages').innerHTML == "Guess a letter.") {		
+
+				document.getElementById('input-tag').onkeydown = function(event) {						
+
+					if (event.keyCode >= 65 && event.keyCode <= 90) {
+
+						document.getElementById('messages').style.fontSize = '22px';
+						document.getElementById('messages').style.marginLeft = '260px';
+						document.getElementById('messages').style.marginTop = '20px';
+						
+						document.getElementById('input-tag').value = "";
+
+						input = String.fromCharCode(event.keyCode);
+
+						for (var firstUpperCase = 0; firstUpperCase < wordArray.length; firstUpperCase++) {
+
+							if (wordArray[0] == input) {
+
+								input = input.toUpperCase();
+							
+							}
+
+							else
+
+							{
+
+								input = input.toLowerCase();
+
+							}
+
+						}
+									
+						messageTag = document.getElementById('messages');
+						messageTag.innerHTML = "You entered " + input + " .";
+						document.getElementById('input-tag').value = "";
+						oldGuessesP = document.getElementById('old-guesses-p-2');
+
+						console.log(input);			
+						var randWordVarMessages = document.getElementById('word');
+						var inputValue = document.getElementById('input-tag').value;				
+						var index = wordArray.includes(input);			
+							
+						console.log("Index: " + index + " Word length: " + wordArray.length);
+						for (var searchWord = 0; searchWord < wordArray.length; searchWord++) {				
+
+							console.log("Search word: " + wordArray[searchWord]);
+							if (wordArray[searchWord] == input) {
+								
+								console.log(wordSymb[searchWord] + "<= set to input => " + input);		
+								wordSymb[searchWord] = " " + input;							
+
+							}
+
+							if (wordArray[searchWord] == input.toUpperCase() && searchWord == 0) {
+
+								wordSymb[searchWord] = input.toUpperCase();
+
+							}
+
+						}			
+
+						for (var i = 0; i < wordSymb.length; i++) {
+
+							if (wordSymb[0]) {
+
+								randWordVarMessages.innerHTML = wordSymb.join("");
+
+							}
+
+							else
+
+							{
+
+							randWordVarMessages.innerHTML = wordSymb.join(" ");
+
+							}
+
+						}				
+
+						incorrectGuessCounter += 1;
+						console.log(incorrectGuessCounter);
+
+						if (incorrectGuessCounter == 1) {
+
+							document.getElementById('old-guesses').style.opacity = '1';
+
+						}
+
+						if (!(wordArray.includes(input))) {
+
+							oldGuessesStore.push(input);
+
+							for (var i = 0; i < oldGuessesStore.length; i++) {
+
+								oldGuessesP.innerHTML = oldGuessesStore.join(" ");
+
+							}
+
+						}
+
+						else if (!(wordArray.includes(input.toUpperCase())) && input == wordArray[0]) {
+
+							oldGuessesStore.push(input);
+
+							for (var i = 0; i < oldGuessesStore.length; i++) {
+
+								oldGuessesP.innerHTML = oldGuessesStore.join(" ");
+
+							}
+
+						}
+
+						console.log((wordArray.includes(input)));			
+
+					}		
+
+					if (wordSymb.includes(" _") == false && wordSymb.includes("_") == false) {
+						
+						document.getElementById('old-guesses').style.opacity = '0';
+						document.getElementById('input-tag').removeEventListener("onkeydown", htmlFirst);
+						document.getElementById('messages').innerHTML = "You guessed correctly. You won.";
+						document.getElementById('messages').style.textAlign = 'center';
+						document.getElementById('messages').style.fontSize = '100px';
+						document.getElementById('word').innerHTML = "";
+						document.getElementById('input-tag').value = "";
+
+						finished();			
+
+					}				
+
+					else if (incorrectGuessCounter == 8) {
+
+						document.getElementById('old-guesses').style.opacity = '0';
+						document.getElementById('input-tag').removeEventListener("onkeydown", htmlFirst);
+						document.getElementById('messages').innerHTML = "GAME OVER";
+						document.getElementById('messages').style.textAlign = 'center';
+						document.getElementById('messages').style.marginLeft = '310px';
+						document.getElementById('messages').style.marginTop = '-10px';
+						document.getElementById('messages').style.fontSize = '200px';			
+						document.getElementById('word').innerHTML = "";
+						document.getElementById('input-tag').value = "";
+						
+						finished();										
+
+					}
+
+				}						
+
+			}
+
+		}
+
+		function finished() {		
+
+			if (document.getElementById('messages').innerHTML == "You guessed correctly. You won." || document.getElementById('messages').innerHTML == "GAME OVER") {
+
+				document.getElementById('input-tag').onkeydown = function(event) {
+
+					if (document.getElementById('messages').innerHTML == "You guessed correctly. You won." || document.getElementById('messages').innerHTML == "GAME OVER" && event.keyCode > -1) {
+
+						document.getElementById('messages').innerHTML = "Enter 'Y' to play again or 'N' to exit the game.";
+						document.getElementById('messages').style.fontSize = '85px';
+						document.getElementById('messages').style.textAlign = 'center';
+						document.getElementById('messages').style.marginTop = '30px';
+						document.getElementById('input-tag').value = "";							
+
+					}
+
+					if (document.getElementById('messages').innerHTML == "Enter 'Y' to play again or 'N' to exit the game.") {
+						
+						if (event.keyCode == 89) {
+								
+							location.reload();						
+
+						}
+
+						else if (event.keyCode == 78) {
+
+							document.getElementById('messages').innerHTML = "Click on the 'x' on the tab to exit. To restart, press F5 on the keyboard.";
+							document.getElementById('messages').style.fontSize = '85px';
+
+						}
+
+						else
+
+						{
+
+							document.getElementById('input-tag').value = "";
+
+						}						
+
+					}
+
+				}	
+
+			}
+
+		}	
+
+		</script>
+
+	</head>
+
+	<body onload="init()">
+
+		<section class="section-1">
+
+			<div id="messages">
+				<p></p>
+			</div>
+
+			<div id="word">
+				<p></p>
+			</div>
+
+			<div id="old-guesses">
+				<p id="old-guesses-p-1">Old guesses:</p>
+				<p id="old-guesses-p-2"></p>
+			</div>
+
+		</section>
+
+		<div id="screen">
+			<img src="Screenlines_horizontal_small.png">
+			<div id="screenInner">
+				<p id="text"></p>
+			</div>
+		</div>
+
+		<section id="input-box">
+			<input id="input-tag" type="text" autofocus>
+		</section>
+
+	</body>
+
+</html>

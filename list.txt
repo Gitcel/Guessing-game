@@ -1,0 +1,10 @@
+var wordArray = ["Earth", "Wind", "Fire", "Water", "Ether", "Nature", "Plants", "Trees",
+				"Sky", "Light", "Darkness", "Vitality", "Soul", "Spirit", "Star", "Gate"];
+
+function randomWord() {
+
+	var word = wordArray[Math.floor(Math.random() * wordArray.length)];
+	var randWordVarMessages = document.getElementById('word');
+	randWordVarMessages.innerHTML = word;
+		
+};

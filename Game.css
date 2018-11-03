@@ -1,0 +1,347 @@
+body
+{
+
+	background-color: #302f40;	
+	opacity: 0.4;
+	margin-top: 0;
+	padding: 0;
+	min-height: 100%;
+	height: 100%;
+	animation: backgImation 1s ease;
+	animation-fill-mode: forwards;	
+
+}
+
+body {
+
+	background-image: url("Metal-surface-dirty.jpg");
+	background-size: 1500px 1500px;
+
+}
+
+@keyframes backgImation {
+
+	0% {opacity: 0.0;}
+	30% {opacity: 0.4;}
+	100% {opacity: 1;}
+
+}
+
+#onButton
+{
+
+	position: relative;	
+	bottom: 1400px;
+	right: 250px;
+	width: 48px;
+	height: 48px;
+	background: transparent;
+	border: 3px solid black;
+	border-radius: 50%;
+	text-align: center;
+	color: rgba(0,0,0,0.5);
+	font-size: 19px;
+
+}
+
+#onButton:before
+{
+
+	position: relative;
+	bottom: 1400px;
+	right: 250px;
+	width: 48px;
+	height: 48px;
+	background: transparent;
+	border: 3px solid black;
+	border-radius: 50%;
+	text-align: center;
+	color: rgba(0,0,0,0.5);
+	font-size: 19px;
+
+}
+
+#onButton:after
+{
+
+	position: relative;
+	bottom: 1400px;
+	right: 250px;
+	width: 48px;
+	height: 48px;
+	background: transparent;
+	border: 3px solid yellow;
+	border-radius: 50%;
+	text-align: center;
+	color: rgba(0,0,0,0.5);
+	font-size: 19px;
+
+}
+
+.box
+{
+
+	position: relative;
+	bottom: 608px;
+	right: 308px;
+	width: 50px;
+	height: 50px;
+	background: rgba(255,255,255,0.5);
+	line-height: 50px;
+	text-align: center;
+	border-radius: 50%;
+	border: double;
+	border-width: 7px;
+	border-color: rgba(0,0,0,0.2);
+	box-shadow: 5px 0 10px rgba(0,0,0,0.5), 5px 0 20px rgba(0,0,0,0.5);	
+
+}
+
+#onButton:hover
+{
+
+	cursor: pointer;
+
+}
+
+.box:visited
+{
+
+	border: 3px solid yellow;
+
+}
+
+@keyframes opacImation {
+
+	0% {opacity: 0.0;}
+	30% {opacity: 0.2;}
+	100% {opacity: 0.3;}
+
+}
+
+div
+{
+
+	margin: 600 300px;	
+
+}
+
+.section-1
+{
+
+	position: relative;		
+	z-index: 1;
+
+}
+
+#messages
+{
+
+	position: absolute;	
+	margin-top: 50px;	
+	font-size: 20px;
+	color: rgba(50,200,50);
+	text-shadow: 0 0 .5px rgba(200,200,200), 0 0 1px rgba(0,200,0);	
+	animation: messagPacity 6s ease;
+	animation-fill-mode: forwards;
+	z-index: -1;	
+
+}
+
+@keyframes messagPacity {
+
+	0% {opacity: 0;}
+	30% {opacity: 0.4;}
+	100% {opacity: 1;}
+
+}
+
+#word
+{
+
+	position: absolute;
+	margin-top: 200px;
+	margin-left: 380px;
+	font-size: 140px;
+	text-align: center;	
+	color: rgba(50,200,50);
+	text-shadow: 0 0 .5px rgba(200,200,200), 0 0 1px rgba(0,200,0);
+	opacity: 0.9;
+	z-index: -1;
+	animation: wordPacity 6s ease;
+	animation-fill-mode: forwards;
+
+}
+
+@keyframes wordPacity {
+
+	0% {opacity: 0;}
+	30% {opacity: 0.4;}
+	100% {opacity: 0.9;}
+
+}
+
+#old-guesses
+{
+
+	position: absolute;
+	margin-top: 0px;
+	margin-left: 820px;
+	z-index: -1;
+	opacity: 0;	
+
+}
+
+#old-guesses-p-1
+{
+
+	font-size: 22px;
+	color: rgba(50,200,50);
+	text-shadow: 0 0 .5px rgba(200,200,200), 0 0 1px rgba(0,200,0);
+	animation-fill-mode: forwards;
+
+}
+
+#old-guesses-p-2
+{
+
+	font-size: 18px;	
+	color: rgba(50,200,50);
+	text-align: center;
+	text-transform: uppercase;
+	text-shadow: 0 0 .5px rgba(200,200,200), 0 0 1px rgba(0,200,0);
+	animation-fill-mode: forwards;
+
+}
+
+#screen
+{
+
+	position: relative;
+	width: 810px;
+	height: 450px;
+	background-color: rgba(0,0,0,0.3);
+	margin-top: 100px;
+	margin-left: 210px;
+	border-radius: 25px;	
+	border-width: 5px;	
+	border-color: rgba(100,100,100,0.1);
+	box-shadow: 0 0 0px rgba(0,0,0,0.0);
+	overflow: hidden;
+	z-index: -1;
+	animation: turnOn 6s linear;
+	animation-fill-mode: forwards;
+
+}
+
+@keyframes turnOn {
+
+	0% {background-color: rgba(0,0,0,0.0);
+		box-shadow: 0 0 0px rgba(0,0,0,0.0);
+
+	}
+
+	30% {background-color: rgba(25,100,25,0.6);
+		box-shadow: 0 0 30px rgba(50,255,50,0.2);
+
+	}
+
+	100% {background-color: rgba(25,200,25,0.3);
+		box-shadow: 0 0 50px rgba(50,255,50,0.3);
+
+	}
+
+}
+
+#screenInner
+{
+
+	width: 810px;
+	height: 450px;
+	margin-top: -25px;
+	margin-left: 15px;
+	background-color: rgba(5,5,5,1);
+	border-radius: 25px;
+	filter: blur(20px);
+	opacity: 1;
+	z-index: 0;
+	animation: turnOnTwo 4s linear;
+	animation-fill-mode: forwards;
+
+}
+
+@keyframes turnOnTwo {
+
+	0% {background-color: rgba(5,5,5,1);}
+	30% {background-color: rgba(5,5,5,0.8);}
+	100% {background-color: rgba(5,5,5,0.6);}
+
+}
+
+input[type="text"]
+{
+
+	background-color: rgba(0,0,0,0);
+	width: 600px;
+	height: 200px;
+	margin: -520px 320px;
+	border-style: inset;
+	border-width: 10px;
+	border-color: #271f40;
+	font-size: 70px;
+	color: rgba(50,200,50, 0.2);
+	text-shadow: 0 0 2px rgba(200,200,200), 0 0 5px rgba(0,200,0);
+	text-transform: lowercase capitalize;		
+	text-align: center;
+	transition: background-color 0.5s ease;	
+
+}
+
+input[type="text"]:hover
+{
+
+	background-color: rgba(10,10,10,0.9);
+
+}
+
+input[type="text"]:focus
+{
+
+	background-color: rgba(10,10,10,0.9);
+
+}
+
+@keyframes inputAnim {
+
+	0% {background-color: rgba(0,0,0,0);}
+	40% {background-color: rgba(4,4,4,0.3);}
+	100% {background-color: rgba(10,10,10,0.9);}
+
+}
+
+#screen img
+{
+
+	width: 1000px;
+	height: 600px;
+	margin-left: 1px;
+	margin-top: -1px;
+	background-color: rgb(0,200,0);
+	position: absolute;
+	border-radius: 25px;
+	filter: blur(1px);			
+	opacity: 0.2;
+	z-index: 1;
+
+}
+
+#input-box
+{
+	margin-top: -2400px;
+	height: 0px;
+}
+
+#input-tag
+{
+	margin-top: 1880px
+}
